@@ -136,24 +136,49 @@
     /* HERO */
     .hero {
       position: relative;
-      background: linear-gradient(135deg, rgba(26,35,64,0.90) 0%, rgba(35,48,88,0.85) 100%),
+      background: linear-gradient(135deg, rgba(26,35,64,0.92) 0%, rgba(35,48,88,0.88) 100%),
                   url('images/hero-main.webp') center/cover no-repeat;
       color: var(--white);
-      padding: 96px 24px 80px;
-      text-align: center;
+      padding: 0 24px;
     }
-    .hero-badge { display: inline-block; background: rgba(245,166,35,0.18); color: var(--yellow); border: 1px solid rgba(245,166,35,0.4); border-radius: 999px; padding: 5px 16px; font-size: 0.8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 20px; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 20px; max-width: 780px; margin-left: auto; margin-right: auto; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('images/hero-main.webp'); background-size: cover; background-position: center; opacity: 0.28; }
+    .hero-split { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; min-height: 580px; align-items: center; }
+    .hero-content { padding: 64px 48px 64px 0; display: flex; flex-direction: column; justify-content: center; }
+    .hero-badge { display: inline-block; background: rgba(245,166,35,0.18); color: var(--yellow); border: 1px solid rgba(245,166,35,0.4); border-radius: 999px; padding: 5px 16px; font-size: 0.8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 20px; align-self: flex-start; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
     .hero h1 span { color: var(--yellow); }
-    .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0 auto 36px; }
-    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.82); max-width: 520px; margin-bottom: 36px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn-primary { background: var(--yellow); color: var(--navy); padding: 14px 30px; border-radius: var(--radius); font-weight: 700; font-size: 1rem; text-decoration: none; transition: background .2s, transform .15s; }
     .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-1px); }
     .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: var(--white); padding: 14px 30px; border-radius: var(--radius); font-weight: 600; font-size: 1rem; text-decoration: none; transition: border-color .2s, background .2s; }
     .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-    .hero-trust { margin-top: 48px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: rgba(255,255,255,0.78); }
-    .trust-item svg { color: var(--yellow); flex-shrink: 0; }
+    .hero-form-panel { background: var(--white); display: flex; flex-direction: column; overflow: hidden; border-radius: 12px; margin: 24px 0 24px 24px; }
+    .hero-form-header { background: var(--yellow); padding: 16px 24px; }
+    .hero-form-header h3 { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+    .hero-form-sub { font-size: 0.76rem; color: rgba(26,35,64,0.7); }
+    .hero-form-body { padding: 20px 24px 24px; }
+    .hero-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hf-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+    .hf-group label { font-size: 0.76rem; font-weight: 700; color: #374151; letter-spacing: .02em; }
+    .hf-group label .req { color: #c0392b; }
+    .hf-group input, .hf-group textarea { padding: 9px 11px; border: 1.5px solid #e5e7eb; border-radius: 6px; font-size: 0.88rem; font-family: inherit; background: #fafafa; color: var(--text); transition: border-color .2s, background .2s; width: 100%; }
+    .hf-group input:focus, .hf-group textarea:focus { outline: none; border-color: var(--yellow); background: var(--white); box-shadow: 0 0 0 3px rgba(245,166,35,0.15); }
+    .hf-group textarea { resize: vertical; min-height: 64px; }
+    .hf-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+    .hf-check-label-head { font-size: 0.76rem; font-weight: 700; color: #374151; letter-spacing: .02em; margin-bottom: 6px; }
+    .hf-check-label-head .req { color: #c0392b; }
+    .hf-check { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; font-weight: 500; cursor: pointer; color: var(--text); background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 5px; padding: 6px 8px; transition: border-color .2s; }
+    .hf-check:hover { border-color: var(--yellow); }
+    .hf-check input[type="checkbox"] { accent-color: var(--yellow); width: 14px; height: 14px; flex-shrink: 0; }
+    .hf-submit { background: var(--yellow); color: var(--navy); border: none; padding: 13px; border-radius: var(--radius); font-size: 0.95rem; font-weight: 800; cursor: pointer; width: 100%; transition: background .2s; letter-spacing: .04em; font-family: inherit; }
+    .hf-submit:hover { background: var(--yellow-dark); }
+    @media (max-width: 900px) {
+      .hero-split { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 48px 0 28px; }
+      .hero-form-panel { margin: 0 0 32px; border-top: 4px solid var(--yellow); }
+      .hero-form-body { padding: 20px 20px 28px; }
+    }
 
     /* SECTION BASE */
     section { padding: 72px 24px; }
@@ -294,29 +319,62 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">&#9889; Westland&rsquo;s Trusted Electricians &mdash; Serving Metro Detroit</div>
-  <h1>Expert <span>Electrical Services</span><br>in Westland, Michigan</h1>
-  <p>Electrician Guys Westland delivers reliable electrical installations, repairs, and panel upgrades for homes and businesses throughout Westland and the surrounding Metro Detroit area.</p>
-  <div class="hero-ctas">
-    <a href="#contact" class="btn-primary">Get a Free Estimate</a>
-    <a href="tel:+17348905687" class="btn-outline">Call 734-890-5687</a>
-  </div>
-  <div class="hero-trust">
-    <div class="trust-item">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-      Licensed &amp; Insured
+  <div class="hero-bg"></div>
+  <div class="hero-split">
+    <div class="hero-content">
+      <div class="hero-badge">&#9889; Westland&rsquo;s Trusted Electricians</div>
+      <h1>Expert <span>Electrical Services</span><br>in Westland, Michigan</h1>
+      <p class="hero-desc">Electrician Guys Westland delivers reliable electrical installations, repairs, and panel upgrades for homes and businesses throughout Westland and the surrounding Metro Detroit area.</p>
+      <div class="hero-ctas">
+        <a href="tel:+17348905687" class="btn-primary">Call 734-890-5687</a>
+        <a href="#contact" class="btn-outline">Get a Free Estimate</a>
+      </div>
     </div>
-    <div class="trust-item">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-      Free Phone Estimates
-    </div>
-    <div class="trust-item">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-      Evenings &amp; Weekends
-    </div>
-    <div class="trust-item">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-      24/7 Emergency Service
+    <div class="hero-form-panel">
+      <div class="hero-form-header">
+        <h3>GET A FREE ESTIMATE</h3>
+        <p class="hero-form-sub">* Indicates required field</p>
+      </div>
+      <div class="hero-form-body">
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="c40f860f-168c-4382-8cc6-42a53eff1e8e" />
+          <input type="hidden" name="subject" value="New Lead &mdash; Electrician Guys Westland" />
+          <input type="hidden" name="from_name" value="Electrician Guys Westland Website" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+          <div class="hero-form-row">
+            <div class="hf-group">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" name="first_name" placeholder="First" required />
+            </div>
+            <div class="hf-group">
+              <label>Last Name <span class="req">*</span></label>
+              <input type="text" name="last_name" placeholder="Last" required />
+            </div>
+          </div>
+          <div class="hf-group">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" name="phone" required />
+          </div>
+          <div class="hf-group">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="email" required />
+          </div>
+          <p class="hf-check-label-head">Service Needed <span class="req">*</span></p>
+          <div class="hf-checks">
+            <label class="hf-check"><input type="checkbox" name="service" value="Panel Upgrade" /> Panel Upgrade</label>
+            <label class="hf-check"><input type="checkbox" name="service" value="Electrical Repair" /> Electrical Repair</label>
+            <label class="hf-check"><input type="checkbox" name="service" value="New Installation" /> New Installation</label>
+            <label class="hf-check"><input type="checkbox" name="service" value="EV Charger" /> EV Charger</label>
+            <label class="hf-check"><input type="checkbox" name="service" value="Lighting" /> Lighting</label>
+            <label class="hf-check"><input type="checkbox" name="service" value="Emergency" /> Emergency</label>
+          </div>
+          <div class="hf-group">
+            <label>Comment <span class="req">*</span></label>
+            <textarea name="comment" required></textarea>
+          </div>
+          <button type="submit" class="hf-submit">SUBMIT</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
